@@ -11,19 +11,15 @@ const connection = mysql.createConnection({
 });
 
 function queryProducts() {
-    connection.query("SELECT itemID, productName, CONCAT(price) FROM products", function(err, res) {
+    connection.query("SELECT itemID, productName, price FROM products", function(err, res) {
         if (err) {
             throw err;
         } else {
-            console.log(res);
-            // console.log("Hawkins Department Store Featured Items: \n");
-            // for (let i = 0; i < res.length; i++) {
-            //     console.log(
-            //         res[i].itemID + 
-            //         "   " + res[i].productName + 
-            //         "   " + res[i].price
-            //     );
-            // }
+            // console.log(res);
+            console.log("Hawkins Department Store Featured Items: \n");
+            for (let i = 0; i < res.length; i++) {
+                console.log(res[i].itemID + "\t" + res[i].productName + "  \($" + res[i].price + "\)");
+            }
         }
     });
 };
